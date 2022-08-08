@@ -8,16 +8,16 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/cart")
 public class CartController 
 {
     @Autowired
     private CartService cartService;
 
-    @GetMapping("/cart")
-    public List<Cart> listAll()
+    @GetMapping
+    public List<Cart> getAllCartItems()
     {
-        return cartService.listAllProduct();
+        return cartService.listAllProducts();
     }
 
     @GetMapping("{id}")
@@ -27,14 +27,7 @@ public class CartController
         return ResponseEntity.ok(cartProduct);
     }
 
-    @GetMapping("{name}")
-    public ResponseEntity<Cart> getProductByName(@PathVariable String name)
-    {
-        Cart cart = (Cart) cartService.getProductsByName(name);
-        return ResponseEntity.ok(cart);
-    }
-
-    @PostMapping("/cart")
+    @PostMapping
     public void addToCart(@RequestBody Cart cart)
     {
         cartService.addCartProduct(cart);
@@ -47,7 +40,7 @@ public class CartController
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Cart> updateCartProduct(@PathVariable Long id, @RequestBody Cart cart) 
+    public ResponseEntity<Cart> updateCart(@PathVariable Long id, @RequestBody Cart cart) 
     {
         cart = cartService.updateCart(id, cart);
         return ResponseEntity.ok(cart);

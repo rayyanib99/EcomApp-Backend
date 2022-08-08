@@ -11,7 +11,7 @@ public class CartService
     @Autowired
     private CartRepository cartRepository;
 
-    public List<Cart> listAllProduct()
+    public List<Cart> listAllProducts()
     {
         return cartRepository.findAll();
     }

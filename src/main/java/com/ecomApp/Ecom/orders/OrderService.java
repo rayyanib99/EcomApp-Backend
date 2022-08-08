@@ -42,7 +42,6 @@ public class OrderService
         orders1.setOrderPrice(orders.getOrderPrice());
         orders1.setOrderDate(orders.getOrderDate());
         orders1.setQuantity(orders.getQuantity());
-        orders1.setUserId(orders.getUserId());
         orders1.setOrderDate(orders.getOrderDate());
         
         orderRepository.save(orders1);

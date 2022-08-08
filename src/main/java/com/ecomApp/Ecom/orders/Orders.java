@@ -12,10 +12,7 @@ import javax.persistence.*;
 @Entity
 @PrimaryKeyJoinColumn(name = "orderId")
 public class Orders extends Product 
-{
-    @Column(name = "user_id")
-    private int userId;
-    
+{   
     private double orderPrice;
     private int quantity;
     

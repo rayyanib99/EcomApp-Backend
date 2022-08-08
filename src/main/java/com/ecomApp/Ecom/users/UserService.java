@@ -11,7 +11,7 @@ public class UserService
     @Autowired
     private UserRepository userRepository;
     
-    public List<User> listAllUser()
+    public List<User> listAllUsers()
     {
         return userRepository.findAll();
     }
@@ -42,7 +42,7 @@ public class UserService
         user1.setFirstName(user.getFirstName());
         user1.setLastName(user.getLastName());
         user1.setAddress(user.getAddress());
-        user1.setAdmin(user.isAdmin());
+        user1.setIsAdmin(user.getIsAdmin());
         
         userRepository.save(user1);
         return user;

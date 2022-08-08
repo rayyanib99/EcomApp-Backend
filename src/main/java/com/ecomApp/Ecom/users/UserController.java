@@ -8,49 +8,48 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/users")
 @CrossOrigin("*")
 public class UserController 
 {
     @Autowired
     private UserService userService;
     
-    @GetMapping("/users")
-    public List<User> listAll()
+    @GetMapping
+    public List<User> getAllUsers()
     {
-        return userService.listAllUser();
+        return userService.listAllUsers();
     }
     
-    @GetMapping("/users/{id}")
-    public Optional<User> getUserById(@PathVariable Long id)
+    @GetMapping("{id}")
+    public Optional<User> getUser(@PathVariable Long id)
     {
         try 
         {
             Optional<User> user = userService.getUserById(id);
-            System.out.println(user);
             return user;
         }
         
-        catch (NoSuchElementException e) 
+        catch(NoSuchElementException e) 
         {
             return null;
         }
     }
 
-    @PostMapping("/users")
-    public void addProduct(@RequestBody User user)
+    @PostMapping
+    public void addUser(@RequestBody User user)
     {
         userService.createNewUser(user);
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteProduct(@PathVariable Long id) 
+    @DeleteMapping("{id}")
+    public void deleteUser(@PathVariable Long id) 
     {
         userService.deleteUser(id);
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateOrder(@PathVariable Long id, @RequestBody User user) 
+    @PutMapping("{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) 
     {
         user = userService.updateUser(id, user);
         return ResponseEntity.ok(user);

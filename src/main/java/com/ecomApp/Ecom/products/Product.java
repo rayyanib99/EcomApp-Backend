@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Product 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     private String name;
     private String productImage;
@@ -24,4 +24,16 @@ public class Product
     private int productInventory;
     private String productDescription;
     private String productCondition;
+    
+    public Product(String name, String image, double unitPrice, String category, String status, int inventory, String description, String condition)
+    {
+        this.name = name;
+        this.productImage = image;
+        this.unitPrice = unitPrice;
+        this.productCategory = category;
+        this.productStatus = status;
+        this.productInventory = inventory;
+        this.productDescription = description;
+        this.productCondition = condition;
+    }
 }
